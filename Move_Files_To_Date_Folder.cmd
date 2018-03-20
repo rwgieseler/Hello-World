@@ -20,6 +20,7 @@ pause
 :: ------- Move files to folders matching the file's YEAR and then MONTH DATE STAMP -----
 for %%F in ("%source%\*") do (
   for /f "tokens=1,2,3 delims=/ " %%A in ("%%~tF") do (
+    If Not Exist "%targetRoot%\%%C\" MD "%targetRoot%\%%C"
     If Not Exist "%targetRoot%\%%C\%%C-%%A-xx" MD "%targetRoot%\%%C\%%C-%%A-xx"
     Copy "%%~fF" "%targetRoot%\%%C\%%C-%%A-xx"
   )
